@@ -1,4 +1,4 @@
-# Insect lab tutorial DRAFT
+# Insect lab R & Vegan tutorial
 
 
 # Load everything
@@ -12,7 +12,7 @@ print(data)
 
 
 
-# Shannon + Pielou Evenness ////////////////////////////////
+# Shannon + Pielou Evenness
 
 # Use the pivot_wider function to make the data more accessible/clean
 family_data <- pivot_wider(data, Family, names_from = Collection, values_from = Collection, values_fn = length, values_fill = 0)
@@ -54,14 +54,7 @@ print(SP_Values)
 
 
 
-
-
-
-
-
-# Jaccard's Index ///////////////////////////////////////// FIX
-# YOUTUBE VID NOTES: rows are samples and columns are taxa, values are counts
-
+# Jaccard's Index
 
 # do same as before to visualize data
 order_data <- pivot_wider(data, Order, names_from = Collection, values_from = Collection, values_fn = length, values_fill = 0)
@@ -78,41 +71,14 @@ vegdist(vals, method = "jaccard", binary = T)
 
 
 
-
-# Plot Heights insects were found at (grouped by order) ////////////////////
-
-# Combo violin and dot plot for insect heights
+# Plot Heights insects were found at (grouped by order)
+# Combo Boc and dot plot for insect heights
 ggplot(data, aes(x=Order, y=Height)) +
   geom_boxplot()+ 
   geom_dotplot(binaxis='y', 
                stackdir='center', 
-               dotsize = .5, 
-               fill="blue")+
+               dotsize = .5)+
   labs(title="Height at which Insects were Caught", 
        x = "Order",
        y = "Hieght (cm)") +
   theme_bw()
-
-
-
-# optional box/dot plot
-ggplot(data, aes(x=Order, y=Height)) +
-  geom_boxplot()+
-  geom_dotplot(binaxis='y', 
-               stackdir='center', 
-               dotsize = .5, 
-               fill="blue") + 
-  labs(title="Height at which Insects were Caught", 
-       x = "Order",
-       y = "Hieght (cm)") +
-  theme_bw()
-
-
-
-
-
-
-
-# Not written into lab yet /////////////////////////////// all draft items
-
-# want to rafify species????
